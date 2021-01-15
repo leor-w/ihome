@@ -1,0 +1,7 @@
+*.conf
+*.sql
+*.tar
+*.gz
+*.zip
+*.rar
+.idea

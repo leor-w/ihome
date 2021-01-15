@@ -1,0 +1,56 @@
+syntax="proto3";
+
+option go_package="proto/user";
+
+// User 定义
+
+message User {
+  string id = 1;
+  string name = 2;
+  string email = 3;
+  string password = 4;
+  string status = 5;
+  string remember_token = 6;
+  string created_at = 7;
+  string updated_at = 8;
+  string deleted_at = 9;
+}
+
+// User
+
+// 基础模型
+
+message Error {
+  int32 code = 1;
+  string description = 2;
+}
+
+message Request {}
+
+message Response {
+  User user = 1;
+  repeated User users = 2;
+  repeated Error errors = 3;
+}
+
+// 基础模型
+
+// 用户验证相关
+message Token {
+  string token = 1;
+  bool valid = 2;
+  repeated Error errors = 3;
+}
+// 用户验证相关
+
+service UserService {
+  // 用户基础接口
+  rpc Create(User) returns (Response) {}
+  rpc Get(User) returns (Response) {}
+  rpc GetAll(Request) returns (Response) {}
+  rpc Update(User) returns (Response) {}
+
+  // token 验证接口
+  rpc Auth(User) returns (Token) {}
+  rpc ValidateToken(Token) returns (Token) {}
+}

@@ -1,0 +1,6 @@
+user:
+  auth:
+    tokenKey: iHomeUserTokenKeySecret
+    issuer: iHome.user.service
+  service:
+    name: ihome.service.user
